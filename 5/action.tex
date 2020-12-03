@@ -1,0 +1,220 @@
+\section{Group Actions}
+\begin{definition}
+    Let $(G,\cdot,e)$ be a group and $S$ be a set.
+    The action of $G$ on $S$ is a function $\star:G\times S\to S$ satisfying\\
+    A1. $\forall x\in S,e\star x=x$.\\
+    A2. $\forall g_1,g_2\in G, \forall x\in S, (g_1\cdot g_2)\star x=g_1\star(g_2\star x)$.
+\end{definition}
+\begin{example}
+    1. $\forall g\in G, x\in S, g\star x=x$ always defines a group action.\\
+    2. A group $G$ acts on the set $S=G$ by left multiplication.
+    That is, via $g\star g'=g\cdot g'$.
+    This is called the \textit{left regular action}.\\
+    3. Consider $\operatorname{Sym}S$, it acts on $S$ by applying the permutation.\\
+    4. The symmetries of a solid $X$ acts on the set of points of $X$ (or a special subset like the set of vertices).
+    Note that the dihedral group $D_{2n}$ acts on an $n$-gon in this way.
+\end{example}
+\begin{definition}
+    The orbit of $x\in S$ is the set
+    $$G\star x=\{y\in X:\exists g\in G,y=g\star x\}$$
+    If this set is equal to $X$, then this action is called transitive.
+    The stabiliser of $x\in S$ is the set
+    $$G_x=\{g\in G:g\star x=x\}$$
+    The kernel is defined as
+    $$\{g\in G:\forall x\in S,g\star x=x\}=\bigcap_{x\in S}G_x$$
+    An action is faithful if its kernel is $\{e\}$.
+\end{definition}
+\begin{theorem}
+    An action is the same as a homomorphism $\rho:G\to\operatorname{Sym}S$.
+\end{theorem}
+\begin{proof}
+    The function $t_g:x\mapsto g\star x$ is a permutation of $X$ for any $g\in G$.
+    Indeed, we can find an inverse of it which is exactly $t_{g^{-1}}$.
+    Now we shall show that the map $\rho:g\mapsto t_g$ is an homomorphism.
+    We can evaluate $\rho(gh)=t_{gh}$, but $t_{gh}(x)=(gh)\star x=g\star(h\star x)=t_g\circ t_h(x)$, therefore
+    $$\rho(gh)=t_g\circ t_h=\rho(g)\rho(h)$$
+    Conversely, let $\rho$ be an homomorphism, then consider the function $\star$ defined by $g\star x=(\rho(g))(x)$ is an action.
+\end{proof}
+Note that the same actions are corrsponded to the same homomorphism.
+\begin{theorem}[Cayley's Theorem]
+    Any group is isomorphic to a subgroup of some symmetric group.
+\end{theorem}
+\begin{proof}
+    Consider the left regular action of the group $G$ on the set $G$.
+    There is then a homomorphism $\rho:G\to \operatorname{Sym}G$.
+    Now this action is faithful.
+    Indeed, $\rho(g)=e\iff\forall x\in G, gx=x\iff g=e$ (Or simply we can write $g=ge=e$).\\
+    Therefore this homomorphism is injective, hence $G\cong\operatorname{Im}\rho\le\operatorname{Sym}G$.
+\end{proof}
+We now want to dive deeper into orbits and stabiliser.
+Let $G$ act on $X$.
+\begin{theorem}
+    For each $x\in X$, $G_x\le G$, and the collection of all orbits $G\star x$ for every $x\in X$ partitions $X$.
+\end{theorem}
+\begin{proof}
+    Note that $e\in G_x$ for each $x$ so $G_x$ is nonempty.
+    If $a,b\in G_x$, then $x=e\star x=(b^{-1}b)\star x=b^{-1}\star (b\star x)=b^{-1}\star x\implies b^{-1}\in G_x$.
+    Therefore $(ab^{-1})\star x=a\star(b^{-1}\star x)=a\star x=x\implies ab^{-1}\in G_x$, so $G_x\le G$.\\
+    Now the union of orbits contains each $x\in X$ since $x\in G\star x$.
+    Now if $G\star x\cap G\star y\neq\varnothing$, there is some $g,h\in G$ such that $g\star x=h\star y$.
+    Therefore for any $z\in G\star x$, then $z=k\star x$ for some $k\in G$, then $z=k\star((g^{-1})\star(h\star y))=(kg^{-1}h)\star y\implies z\in G\star y$.
+    So $G\star x\subseteq G\star y$ and $G\star y\subseteq G\star x$, so $G\star x=G\star y$.
+    Hence the orbits form a parition of $X$.
+\end{proof}
+What we have discussed so far is called the left action.
+The right action $\diamond:X\times G\to X$ is defined analogously.
+So $x\diamond e=x$ and $(x\diamond g)\diamond h=x\diamond (gh)$.
+\begin{proposition}
+    If $\diamond$ is a right action, then we can define a left action $\star$ by $g\star x=x\diamond g^{-1}$.
+    We can also have the other way around.
+\end{proposition}
+\begin{proof}
+    Trivial.
+\end{proof}
+So we can only use left actions during the scope of our study.
+\begin{definition}
+    If $G$ has a left action on $X$, the set of orbits is called $G\backslash X=\{G\star x:x\in X\}$.
+    If $G$ has a right action on $X$, the set of orbits is called $X/G=\{x\diamond G:x\in X\}$
+\end{definition}
+\begin{example}
+    The dihedral group $D_{2n}$ acts on the regular $n$-gon $X$ in the obvious way.\\
+    The orbit of a vertex is then all vertices.
+    The stabiliser of a vertex is the identity and the reflection across the axis which is the diagonal through the vertex.
+    Note here that the size of the orbit times the size of stabiliser is the size of the dihedral group.\\
+    Now consider a point in the interior of a side of the square.
+    Then the orbit of this point would consist of $8$ points, and nothing stabilises it, so we also get that the product of the sizes of the orbit and the stabiliser is $8$, the size of the dihedral group.\\
+    Let us now look at the symmetries of the tetrahedron with vertices $1,2,3,4$.
+    Suppose the rotation across midpoints of opposite sides be $S$ and the rotation across the central axis through a vertex $R$.\\
+    Let $V$ be the set of vertices and let this group act on it.
+    Then it is obvious that this action is transitive, and the stabiliser of a vertex are the rotations with respect to the axis through that vertex.\\
+    So again the sizes of the orbit and stabiliser give a product of $12$, the size of the group.\\
+    Now we act on the set of edges $E$.
+    Pick one of the edge $X$, then the action of the group on it is yet again transitive, and the stabilisers are the identity and the rotation $R$ on the midpoint of $E$ and its opposite edge.
+    Again they give a product of $6\times 2=12$, the size of the group.
+\end{example}
+The preceding observation triggers the following theorem.
+\begin{theorem}[Orbit-Stabiliser Theorem on finite groups]\label{ost_finite}
+    $|G_x||G\star x|=|G|$
+\end{theorem}
+To prove it, we need some preparation.
+\begin{proposition}
+    If $H\le G$, the left regular action of $H$ on $G$ is the left multiplication of element in $H$ on $G$, i.e. $h\star g=hg$.
+    The right regular action then is $g\diamond h=gh$
+\end{proposition}
+\begin{definition}
+    A left coset of $H$ in $G$ is an orbit of the right regular action.
+    Write $G/H$ to denote the collection of these cosets.\\
+    We can define the right coset the other way around which are collected as $H\backslash G$.
+\end{definition}
+So each left coset is in the form $gH=\{gh:h\in H\}$, and the right coset in the form $Hg=\{hg:h\in H\}$.
+Note that it is not always true that a left coset is equal to the right coset.\\
+Also $G/H=\{S\subseteq G:\exists g\in G,S=gH\}$ and we can find $H\backslash G$ similarly.
+\footnote{Some authors use $G:H$ for the collection of left cosets.}\\
+Note that $gH=g'H\iff g'^{-1}g\in H$, and for right cosets $Hg=Hg'\iff g'g^{-1}\in H$ but again these two conditions may or may not be equivalent.
+\begin{example}
+    The (left and right) cosets of $2\mathbb Z$ are $2\mathbb Z$ and $2\mathbb Z+1=1+2\mathbb Z$.\\
+    The (left and right) cosets of $n\mathbb Z$ are $k+n\mathbb Z, k\in\{0,1,\ldots n-1\}$.\\
+    Consider $D_6$, $R=\{e,r,r^2\}, S=\{e,s\}$ are subgroups.
+    The (left and right) coset of $R$ are $R$ and $sR=Rs$
+    And the left cosets of $S$ are $S$, $rS$ and $r^2S$ and the right ones are $S$, $Sr$, $Sr^2$, but in this case the left and right cosets are not equal.
+\end{example}
+\begin{theorem}
+    If $H\subset G$ and $g\in G$, then there is a bijection $H\to gH$.
+\end{theorem}
+\begin{proof}
+    $h\mapsto gh$ is the bijection.
+\end{proof}
+\begin{corollary}[Lagrange's Theorem]\label{lagrange}
+    If $G$ is finite and $H\le G$, then we have $|H||G/H|=G$.
+    In particular $|H|$ divides $|G|$.
+\end{corollary}
+\begin{proof}
+    The cosets are orbits thus parition $G$ and they are of the same cardinality due to the preceding theorem.
+\end{proof}
+We can repeat the same argument to see that the same also applies to right cosets.
+\begin{definition}
+    Let $G$ be a group, and $H\le G$, then the index of $H$ is the order of $G/H$ given that it is finite, otherwise we say the index is infinite.
+\end{definition}
+Equivalently, the index is $|G|/|H|$ (given that $H$ is finite).
+\begin{corollary}
+    If $G$ is finite and $g\in G$, then $g^{|G|}=e$, that is, $\operatorname{ord}g||G|$.
+\end{corollary}
+\begin{proof}
+    Consider the subgroup $\langle g\rangle\le G$.
+\end{proof}
+\begin{corollary}
+    If $G$ is finite $|G|$ is prime, then $G\cong C_p$ and it is generated by any identity element.
+\end{corollary}
+\begin{proof}
+    $G$ contains some non-identity element since $|G|=p>1$.
+    Choose any $g\in G$ such that $g\neq e$.
+    Then $1<\operatorname{ord}g||G|=p$, so since $p$ is prime, then $\operatorname{ord}g=p$.
+    Thus since $\langle g\rangle\le G$ and they are both finite and of the same order, $C_p\cong \langle g\rangle=G$.
+\end{proof}
+There is a corollary of this in number theory.
+We consider the collection of all (equivalent classes) of integers $k\in\mathbb Z_n$ such that $(k,n)=1$.
+Since $(k,n)=1$, $k$ is invertible in $\mathbb Z_n$ for any such $k$ in the collection.
+Conversely, if $k$ cannot be invertible in $\mathbb Z_n$ if $(k,n)\neq 1$.\\
+So this collection is a group $\mathbb Z_n^{\times}$ under multiplication modulo $n$.
+Also, this group has order $\phi(n)$ which is the number of positive integers less than $n$ that are coprime to it.
+\begin{corollary}[Fermat-Euler Theorem]
+    If $(k,n)=1$, then
+    $$k^{\phi(n)}\equiv 1\pmod{n}$$
+\end{corollary}
+\begin{proof}
+    Apply the preceding corollary to $\mathbb Z_n^\times$.
+\end{proof}
+After these warm-ups, we shall prove the Orbit-Stabiliser Theorem (in a stronger form).
+\begin{theorem}[Orbit-Stabiliser Theorem]
+    Suppose a group $G$ acts on a set $X$ and $x\in X$, then there is a bijection $G/G_x\to G\star x$ by $\phi:gG_x\mapsto g\star x$.
+\end{theorem}
+\begin{proof}
+    To see $\phi$ is well defined, observe that $\forall h\in G_x, g\star x=g\star (h\star x)=(gh)\star x$.
+    It is obviously surjective by the definition of orbit.
+    It is injective since if $\phi(gH)=\phi(g'H)$, then $(g^{-1}g')\star x=x\implies g^{-1}g'\in H\implies gH=g'H$.
+\end{proof}
+\begin{corollary}
+    Theorem \ref{ost_finite}.
+\end{corollary}
+\begin{proof}
+    Due to the existence of this bijection, if $G$ is finite, then $|G|/|G_x|=|G/G_x|=|G\star x|\implies |G\star x||G_x|=|G|$.
+\end{proof}
+One of the most important application of this theorem is to work out the order of some finite group.
+\begin{example}
+    We look at the rotational symmetries of a cube.
+    Collect the symmetries as the group $G$ and consider its action on the eight vertices $X$.
+    Now this action is transitive, obviously, so fixing any $x\in X$, $|G\star x|=8$.
+    Also, any member of the stabiliser of $x$ must be rotations though the axis through $x$ and the centre of the centre of the group since it fixes that.
+    There are three rotations of this form, so $|G|=|G_x||G\star x|=24$.
+\end{example}
+\begin{theorem}[Cauchy's Theorem]\label{cauchy}
+    Let $G$ be a finite group and suppose $p$ is a prime dividing its order, then $G$ contains an element of order $p$.
+\end{theorem}
+\begin{proof}
+    Consider a subset $X\subseteq G^p$ defined by $X=\{(g_1,g_2,\ldots, g_p)\in G^p:g_1g_2\cdots g_p=e\}$.
+    Since $|G^p|=|G|^p$, and $|X|=|G|^{p-1}$.
+    Let $H=C_p=\langle\xi\rangle$, consider the action of $H$ on $X$ by
+    $$\xi\star (g_1,g_2,\ldots,g_p)=(g_2,g_3,\ldots,g_p,g_1)$$
+    This is an action, indeed, if $g_1g_2\cdots g_p=e$, then $g_2g_3\cdots g_pg_1=g_1^{-1}eg_1=e$.
+    For any element $x\in X$, by Theorem \ref{ost_finite}, $p=|H|=|H_x||H\star x|$.
+    But $p$ is prime, so every orbit has to have either size $1$ or size $p$, also the ordrs of the orbits sum to $|X|=|G|^{p-1}$ which is divisible by $p$.
+    So the number of size $1$ orbits must be divisible by $p$, thus at least $2$.
+    But all such orbits must be in the form $(g,g,\ldots, p)$, but since there are $2$ of them, there is some $g\neq e$ such that this tuple is in $X$, thus $g^p=e$ and $g\neq e$, therefore $g$ has order $p$.
+\end{proof}
+In fact, we have shown that the number of elements of order $p$ is congruent to $p-1\pmod{p}$.
+\begin{definition}
+    Fix a group $G$.
+    $a,b\in G$ are conjugates of each other if $\exists g\in G, a=gbg^{-1}$.\\
+    The conjugation action is an action of a group $g$ on itself by $g\star h=ghg^{-1}$.
+\end{definition}
+One can check that the conjugation is indeed an action.
+\begin{definition}
+    The orbits of the conjugation are called the conjugacy classes of $G$.
+    The stabiliser of the conjugation of an element $h$ is called the centraliser $C_G(h)$ of $h$.
+    The kernel of the conjugation action is called the centre $Z(G)$ of $G$.
+\end{definition}
+We can extend the conjugation action to the subgroups of $G$.
+\begin{definition}
+    If $H\le G$, then the conjugate of $H$ by $g$ is the subgroup $\{ghg^{-1}:h\in H\}$.
+\end{definition}
+It is trivial that the conjugate of a subgroup is indeed a subgroup.

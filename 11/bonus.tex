@@ -1,0 +1,81 @@
+\section{Bonus Lecture: Simple Groups of Order 60}
+Consider $\operatorname{GL}_2(\mathbb Z_5)$.
+We first want to find the size of this group.
+It is easy to see that
+$$\begin{pmatrix}
+    a&b\\
+    c&d
+\end{pmatrix}\in\operatorname{GL}_2(\mathbb Z_5)$$
+is invertible if annd only if $ad-bc$ has a multiplicative inverse, that is, is nonzero.
+Take $U_5\subset \mathbb Z_5$ to be the set of elements in $\mathbb Z_5$ having multiplicative inverse, that is, $U_5=\mathbb Z_5^\times=\mathbb Z_5\setminus\{0\}$.
+There are $5^4=625$ $2\times 2$ matrices in total.
+Amongst them, the number of non-invertible ones satisfies $ad\equiv bc\pmod{5}$.\\
+Case 1: $a=0$, then $bc=0$, so either $b=0$ (which gives $25$ choices) or $c=0$ (which gives, again, $25$ choices).
+There are double-counted cases where $b=c=0$ and there are $5$ cases, so there is a total of $45$ choices.\\
+Case 2: $a\neq 0$, then we can solve for $d$ given $b,c$.
+Indeed, for any $b,c$, we can have an unique corresponding $d$, hence there are $4\times 5^2=100$ choices.\\
+So there are a total of $145$ non-invertible matrices and thus $480$ invertible matrices.
+There are still a lot of elements, so we want to think about $\operatorname{SL}_2(\mathbb Z_5)$.
+But since $\det:\operatorname{GL}_2(\mathbb Z_5)\to\mathbb Z_5^\times$ is a surjective homomorphism with kernel $\operatorname{SL}_2(\mathbb Z_5)$, so $|\operatorname{SL}_2(\mathbb Z_5)|=120$.
+Also note that $\operatorname{PSL}_2(\mathbb Z_5)\cong\operatorname{SL}_2(\mathbb Z_5)/\{\pm I\}$, then $|\operatorname{PSL}_2(\mathbb Z_5)|=60$.
+We can analyze the conjugacy classes in $\operatorname{PSL}_2(\mathbb Z_5)$ to find out that they look exactly like that in $A_5$.
+In fact they are isomorphic.
+\begin{theorem}
+    $\operatorname{PSL}_2(\mathbb Z_5)\cong A_5$.
+\end{theorem}
+\begin{proof}
+    Let $G=\operatorname{PSL}_2(\mathbb Z_5)$.
+    Take the subgroup
+    $$H=\left\{ \begin{pmatrix}
+        1&0\\
+        0&1
+    \end{pmatrix},
+    \begin{pmatrix}
+        2&0\\
+        0&3
+    \end{pmatrix},
+    \begin{pmatrix}
+        0&2\\
+        2&0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0&1\\
+        4&0
+    \end{pmatrix}\right\}\le G$$
+    so the three non-identity elements in $H$ has order $2$ and since there is only one conjugation class of element of order $2$, so the conjugates of $H$ contains all element of order $2$.
+    Since there are $15$ elements of order $2$ and $H$ contains $3$ elements of order $2$, there must be at least $5$ conjugates of $H$.
+    We want to show there are precisely $5$ of them.
+    Consider the action $G$ on the set $X$ of the subgroups of $G$ by conjugation, then the stabiliser $G_H$ (the normalizer) satisfies $|G_H|\times |G\star H|=|G|=60$.
+    Note that $H\le G_H$, hence $4||G_H|$, therefore $|G\star H||15$.
+    If $|G\star H|=15$, we know that there are only $15$ elements of order $2$, some pair of conjugates have $3$ elements in common (counting identity), but then they must be the same, contradiction.
+    So $|G\star H|=5$ as claimed.
+    The action of $G$ on $G\star H$ then gives a homomorphism $\rho:G\to S_5$.\\
+    Now $G$ is simple by the same argument we used to show the simplicity of $A_5$ since they have the same table of sizes of conjugacy classes.
+    Hence $\rho$ is injective (since $\rho$ is obviously not constant), so $G\cong\operatorname{Im}\rho$ which has index $2$ in $S_5$, hence is normal in $S_5$.\\
+    Suppose $\operatorname{Im}\rho\neq A_5$, then $\operatorname{Im}\rho\cap A_5\le A_5$ has index $2$, so $\{e\}\neq\operatorname{Im}\rho\cap A_5\lhd A_5$, contradiction.
+    Therefore $G\cong\operatorname{Im}\rho\cong A_5$.
+\end{proof}
+In fact, there is only one simple group of order $60$ up to isomorphism.\\
+Now we turn to the symmetry of platonic solids.
+Note that dual solids have isomorphic symmetries.
+Let $G$ be the group of all isometries of a platonic solid and and $SG$ the group of all rotational isometries of it.
+It is fact that $\operatorname{O}(3)\cong \operatorname{SO}(3)\times C_2$.
+Note $S_4\not\cong A_4\times C_2$, since $x\mapsto -x$ is no longer a symmetry of the tetrahedron.
+Otherwise, we have $G\cong SG\times C_2$.\\
+For cube, we have seen that $SG$ has $24$ elements.
+In fact, $SG\cong S_4$ since it permutes the set of long diagonals (pairs of opposite vertices).\\
+Now symmetries of a regular isocahedron.
+Let $SG$ act (transitively) on its $12$ vertices.
+The stabiliser of the vertex are the rotations though the axis through the vertex, so it is isomorphic to $C_5$.
+So $|SG|=5\times 12=60$.
+In fact, again we have $SG\cong A_5$.
+\begin{proposition}
+    $SG$ is simple.
+\end{proposition}
+\begin{proof}
+    $SG$ contains rotations of order $5$ through a vertex and of order $3$ through the centre of a face or order $2$ through the centre of an edge.
+    So if $H\unlhd SG$ contains a rotation of order $5$ around some vertex, then by conjugating we can contain all rotations of order $5$ around any vertex.
+    But then $H$ acts transitively on the vertices, and on any pair of vertices, but then one must get all rotations, so $H=SG$.
+    Similar arguments hold if $H$ contains an element of order $2$ or $3$, hence $SG$ is simple.
+\end{proof}
+In fact, there are five inscribed tetrahedra in an isocahedra that are permuted by the action of $SG$, so by the same argument used in showing $\operatorname{PSL}_2(\mathbb Z_5)\cong A_5$, we have $SG\cong A_5$.

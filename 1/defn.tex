@@ -1,0 +1,53 @@
+\section{Definitions}
+Note, in our previous two examples of rotational symmetrical groups, the notion of composition is quite important:
+In both of our proofs that the tetrahedron group and the isocagonal cone group are different, we have harness this notion.
+Naturally, we should have it in our definition of group.
+\begin{definition}
+    Let $X$ be a set. A binary operation $\cdot$ is a function $:X\times X\to X$.
+\end{definition}
+\begin{definition}
+    A group $G$ is a triple $(G,\cdot,e)$, where $G$ is a nonempty set, $\cdot$ is a binary operation on $G$ and $e\in G$, that satisfies\\
+    G1. (Law of Associativity) $\forall a,b,c\in G, (a\cdot b)\cdot c=a\cdot (b\cdot c)$.\\
+    G2. (Identity) $\forall a\in G, a\cdot e=a$.\\
+    G3. (Inverse) $\forall a\in G, \exists b\in G, a\cdot b=e$
+\end{definition}
+Most of the time we write $a\cdot b$ as $ab$.
+\begin{theorem}
+    Let $(G, \cdot, e)$ be a group, then\\
+    1. $ab=e\implies ba=e$.\\
+    2. $ea=a$.\\
+    3. $ab=e\land ab^\prime=e\implies b=b^\prime$.\\
+    4. $\exists a, ae^\prime=a\implies e^\prime=e$.
+\end{theorem}
+\begin{proof}
+    1. Choose $c$ such that $(ba)c=e$, so $e=bac=beac=b(ab)ac=ba((ba)c)=bae=ba$.\\
+    2. By part 1, we can choose $b$ such that $ab=ba=e$, so $ea=aba=ae=a$.\\
+    3. $b=bab^\prime=eb^\prime$ (due to part 1) $=b^\prime$ (due to part 2).\\
+    4. By part 1, we choose $b$ such that $ba=e$, so $e^\prime=ee^\prime$ (by part 2) $=bae^\prime=ba=e$.
+\end{proof}
+\begin{remark}
+    There are a LOT of proofs to the preceding theorem.
+    For example, the lecturer used a somewhat different proof for part 1 of the theorem.
+    Therefore, you should try and come up with your own -- it's great fun.
+\end{remark}
+By part 3 and axiom G3, any $a$ in the group has a unique $b$ in the group such that $ab=ba=e$.
+Then we write $a^{-1}=b$ for this element.
+This is called the \textit{inverse} of $a$.
+Note as well that $(a^{-1})^{-1}=a$.
+In addition, $(ab)^{-1}=b^{-1}a^{-1}$.
+\begin{definition}
+    For any element $a\in G$, declare $a^0=e$.
+    Say inductively that $a^n=a(a^{n-1})$ for a positive integer $n$.
+    Similarly for a negative integer $n$, $a^n=(a^{-1})^{-n}$
+\end{definition}
+One can check that the usual laws of indices apply.
+\begin{proposition}
+    1. $a^na^m=a^{m+n}$.\\
+    2. $(a^n)^m=a^{nm}$.
+\end{proposition}
+\begin{proof}
+    Trivial.
+\end{proof}
+There are some `fake axioms' that we do not actually have to be stated.
+For example, the definition of binary operation includes the axiom of closure.
+However, we do have to verify the closure property to show that something is a group.

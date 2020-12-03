@@ -1,0 +1,59 @@
+\section{Homomorphisms}
+\begin{definition}
+    For groups $G,H$, a map $\phi:H\to G$ is called a homomorphism $H\to G$ if
+    $$\phi(h_1h_2)=\phi(h_1)\phi(h_2)$$
+    for any $h_1,h_2\in H$.\\
+    If $\phi$ is a bijection as well, then it is called an isomorphism.
+    In this case, we say $G,H$ are isomorphic.
+\end{definition}
+\begin{example}
+    1. For any $H,G$, the function $f$ defined by $f(h)=e$ for any $h\in H$ is a homomorphism.\\
+    2. If $H\le G$, the inclusion map is a homomorphism.\\
+    3. Let $n|m$, the map $z\mapsto z^{m/n}$ is a homomorphism between $C_n\to C_m$.\\
+    4. The exponential function $\exp:\mathbb R\to\mathbb R_{>0}$ is a homomorphism $(\mathbb R,+,0)\to(\mathbb R_{>0},\times,1)$.\\
+    5. The determinant function $\det:\operatorname{Gl}_n(\mathbb R)\to\mathbb R\setminus\{0\}$ under multiplication.
+\end{example}
+\begin{lemma}
+    If $\phi:H\to G$ is a homomorphism, then\\
+    1. $\phi(e_H)=e_G$ where $e_H$ is the identity of $H$ and $e_G$ the identity of $G$.\\
+    2. $\forall a\in G,\phi(a^{-1})=\phi(a)^{-1}$
+\end{lemma}
+\begin{proof}
+    1. Consider $e^2=e$ where $e$ is the identity of any group, so
+    $$\phi(e_H)^2=\phi(e_H^2)=\phi(e_H)\implies \phi(e_H)=e_G$$
+    2. we have
+    $$e_G=\phi(aa^{-1})=\phi(a)\phi(a^{-1})\implies \phi(a^{-1})=\phi(a)^{-1}$$
+    as desired.
+\end{proof}
+It also follows easily from definitions that compositions of homomorphisms is a homomorphism.
+\begin{definition}
+    Let $\phi:H\to G$ be a homomorphism, then the image of $\phi$ is defined as
+    $$\operatorname{Im}\phi=\{g\in G:\exists h\in H, \phi(h)=g\}$$
+    The kernel of $\phi$ is defined as
+    $$\ker\phi=\{h\in H:\phi(h)=e_G\}$$
+    where $e_G$ is the identity of $G$.
+\end{definition}
+\begin{proposition}
+    $\operatorname{Im}\phi\le G,\ker\phi\le H$.
+\end{proposition}
+\begin{proof}
+    For the first part, suppose that $a,b\in\operatorname{Im}\phi$, then suppose that $\phi(h_1)=a,\phi(h_2)=b$, we have $ab^{-1}=\phi(h_1h_2^{-1})\in\operatorname{Im}\phi$.\\
+    For the second part, suppose $a,b\in\ker\phi$, then $\phi(ab^{-1})=e_Ge_G^{-1}=e_G$ where $e_G$ is the identity of $G$.
+    So $ab^{-1}\in\ker\phi$.\\
+    It is also immediate that both of them are nonempty, as $e_H\in\ker\phi,e_G\in\operatorname{Im}\phi$.
+\end{proof}
+\begin{proposition}
+    A homomorphism is an isomorphism if and only if its kernel is the subgroup consisting of only the idenity of the domain and that its image is the entire codomain.
+\end{proposition}
+\begin{proof}
+    Take a homomorphism $\phi: H\to G$.
+    If it is an isomorphism then the condition is immediate.\\
+    Conversely, since $\operatorname{Im}\phi=G$, $\phi$ is surjective.
+    At the same time, if $\phi(h_1)=\phi(h_2)$ for some $h_1,h_2\in H$, then
+    $$\phi(h_1h_2^{-1})\in\ker\phi\implies h_1h_2^{-1}=e_H\implies h_1=h_2$$
+    where $e_H$ is the identity of $H$.
+    So it is also injective, it follows that it is a bijection, therefore it is an isomorphism.
+    \footnote{Alternatively, like the lecturer did, we can construct an explicit inverse, which is not as clean as this approach in the author's opinion.}
+\end{proof}
+Note as well that an inverse of an isomorphism is again an isomorphism.
+The proof to this is trivial.

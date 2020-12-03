@@ -1,0 +1,98 @@
+\section{Classification of Some Small Finite Groups}
+Consider
+$$\underline{1}=
+\begin{pmatrix}
+    1&0\\
+    0&1
+\end{pmatrix}
+\underline{i}=
+\begin{pmatrix}
+    i&0\\
+    0&-i
+\end{pmatrix}
+\underline{j}=
+\begin{pmatrix}
+    0&1\\
+    -1&0
+\end{pmatrix}
+\underline{k}=
+\begin{pmatrix}
+    0&i\\
+    i&0
+\end{pmatrix}
+$$
+One can check that
+$Q_8=\{\pm\underline{1},\pm\underline{i},\pm\underline{j},\pm\underline{k}\}$ is a group under matrix multiplication, we also have $\underline{i}^2=\underline{j}^2=\underline{k}^2=\underline{1},\underline{i}\underline{j}=\underline{k}=-\underline{j}\underline{i},\underline{j}\underline{k}=\underline{i}=-\underline{k}\underline{j},\underline{k}\underline{i}=\underline{j}=-\underline{i}\underline{k}$
+\begin{definition}
+    If $G,H$ are groups, then we can have the product group $G\times H$ under the group operation
+    $$(g_1,h_1)(g_2,h_2)=(g_1g_2,h_1h_2)$$
+\end{definition}
+One can check that $(G\times H)\times K\cong G\times (H\times K)$.
+\begin{theorem}[Chinese Remainder Theorem]\label{crt}
+    If $m,n\in\mathbb N$ such that $m,n\ge 2$ and $(m,n)=1$, then the following function $\phi: \mathbb Z_{mn}\to\mathbb Z_m\times\mathbb Z_n$ defined by
+    $$a\mapsto (a\bmod m,a\bmod n)$$
+    is an isomorphism.
+\end{theorem}
+\begin{proof}
+    It is trivial that $\phi$ is well-defined and is a homomorphism.
+    Both groups has the same size, so it suffices to show that injectivity.
+    To see it, consider $\ker\phi$.
+    If $a\in\ker\phi$, then $a\equiv 0\pmod{m}$ and $a\equiv 0\pmod{n}$, so $a\equiv 0\pmod{mn}$.
+    So the kernel of $\phi$ is trivial, hence it is injective.
+\end{proof}
+\begin{theorem}\label{direct_product_thm}
+    Let $H_1,H_2\le G$, then if\\
+    1. $H_1\cap H_2=\{e\}$\\
+    2. $h_1h_2=h_2h_1$ for any $h_1\in H_1,h_2\in H_2$.\\
+    3. $\forall g\in G,\exists h_1\in H_1, h_2\in H_2, h_1h_2=g$.\\
+    Then $G\cong H_1\times H_2$.
+\end{theorem}
+\begin{proof}
+    Consider the map $\phi:H_1\times H_2\to G$ such that $\phi:(h_1,h_2)\mapsto h_1h_2$.
+    It is a homomorphism by 2, indeed, if $h_1,h_1'\in H_1, h_2,h_2'=H_2$, then
+    \begin{align*}
+        \phi(h_1,h_2)\phi(h_1',h_2')=h_1h_2h_1'h_2'=h_1h_1'h_2h_2'\\
+        =\phi(h_1h_1',h_2h_2')=\phi((h_1,h_2)(h_1',h_2'))
+    \end{align*}
+    Its surjectivity is implied by 3.
+    If $\phi(h_1,h_2)=e$, then $h_1h_2=e\implies H_1\ni h_1=h_2^{-1}\in H_2$, so $h_1=h_2=e$, so $\ker\phi=\{e\}$, thus it is injective.
+    Therefore it is a isomorphism.
+\end{proof}
+we now wish to classify finite groups of order at most $8$.
+For $|G|=1,2,3,5,7$, we already know that $G$ would be cyclic, so it remains to find those in $4,6,8$.
+\begin{theorem}
+    For a finite group $G$ such that each element is with order $2$, then we know that $|G|$ is even, also it is isomorphic to the direct product of $C_2$'s.
+\end{theorem}
+\begin{proof}
+    We know that $G$ is abelian.
+    \footnote{Proved a long time ago in example sheet.}
+    So it is done by Theorem \ref{direct_product_thm} and the associativity of group direct products (up to isomorphism).
+\end{proof}
+Thus, for $|G|=4$, either there is an element of order $4$, in which case $G\cong C_4$, or every element has order $2$, where we have $G\cong K_4:=(C_2)^2=C_2\times C_2$.
+For $|G|=6$, then if there is an element of order $6$, then $G\cong C_6$, otherwise there is an element $r$ of order $3$ and $s$ of order $2$ (by Theorem \ref{cauchy}) such that $sr\neq rs$ (since if so them $G\cong C_2\times C_3\cong C_6$ by Theorem \ref{direct_product_thm} and Theorem \ref{crt}).
+But the elements $\{e,s,r,r^2,rs,r^2s\}$ are distinct, by inspection we must have $sr=r^2s$, but this would give the full definition of the group operation which is identical to that of the Dihedral group on a $3$-gon (aka equilateral triangle), so $G\cong D_6\cong S_3$.\\
+Groups of order $8$ is a little bit more complicated.
+\begin{claim}
+    There are only $5$ groups of order $8$, and they are
+    $$C_8,C_4\times C_2,(C_2)^3,D_8,Q_8$$
+    up to isomorphism.
+\end{claim}
+\begin{proof}
+    $C_8,C_4\times C_2, C_2\times C_2\times C_2$ are Abelian, and $D_8,Q_8$ are not.
+    Furthermore, by looking at the order of elements, $C_8,C_4\times C_2, C_2\times C_2\times C_2$ are all distinct.
+    And by essentially the same method, $D_8,Q_8$ are distinct as well, as $Q_8$ has only one element of order $2$ but $D_8$ has more.\\
+    So it remains to show that every group of order $8$ is one of them.\\
+    Let $G$ be the group.
+    Since $|G|=8$, any element of $G$ must have orders $1,2,4,8$.
+    If it has element of order $8$, then $G\cong C_8$; if all its elements are of order $2$, then $G\cong (C_2)^3$.
+    Assume henceforth that $G$ has at least one element $f$ of order $4$ but none of order $8$.
+    Let $g\notin\langle f\rangle$, so $G=\langle f\rangle\cup g\langle f\rangle$, in order words
+    $$G=\{e,f,f^2,f^3,g,gf,gf^2,gf^3\}$$
+    Note that $g^2\notin g\langle f\rangle$, thus $g^2=e$ or $g^2=f^2$ since $g$ does not have order $8$.\\
+    If $g^2=e$, then $fg=gf\implies G\cong C_4\times C_2$ by Theorem \ref{direct_product_thm}, otherwise we have $fg=g^3f$, which means that $G\cong D_8$\\
+    Otherwise $g^2=f^2$, then $fg\neq e,f,f^2,f^3$ by inspection.
+    Now if $g$ is abelian then $g^2f^{-2}=e\implies (gf^{-1})^2=e$, $gf^{-1}\notin\langle f\rangle\implies G\cong C_4\times C_2$.
+    Otherwise, by inspection $fg=gf^3$, therefore we have defined the group action completely, so it can only be isomorphic to $Q_8$, which is not in any of the preceding cases.
+    \footnote{Alternatively we can easily construct an explicit isomorphism.}
+    So the claim is proved.
+\end{proof}

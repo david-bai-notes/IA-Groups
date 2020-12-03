@@ -1,0 +1,41 @@
+\section{Motivation of Group}
+Groups are the mathematical notion of symmetries.
+Indeed, if we go further into this topic, we will find that the symmetries of anything give a group, and any group is actually the symmetry of something.
+Then why study symmetries in this way?
+Why do we not just desribing the symmetries one by one instead?\\
+Consider a tetrahedron.
+There are $12$ rotational symmetries of it: $1$ doing nothing, $8$ rotations on an axis joining one of the vertices and the centre of the tetrahedron, and $3$ rotations on the axis joining the midpoints of opposite sides.
+The interesting thing is, if you composite two of the rotations that are listed above, you get another rotation.
+For example, if we label the vertices as $1,2,3,4$, then one of the rotations on the axis passing though vertex $1$ may send the vertices like
+$$1\to 1, 2\to 4, 3\to 2, 4\to 3$$
+and the rotation on the axis joining midpoints of opposite segments would permute them by
+$$1\to 3, 2\to 4, 3\to 1, 4\to 2$$
+We let $R$ be the former rotation and $S$ be the latter, then we could find $S\circ R$, the rotation given by doing $R$ first then $S$ next.
+Indeed, this is the permutation
+$$1\to 3, 2\to 2, 3\to 4, 4\to 1$$
+which is one of the rotations on the axis passing though $2$.
+Here is an interesting thing: we can do $R\circ S$ as well, but it is, as one can check, a rotation on the axis passing though $4$!
+So $RS\neq SR$, as in the order of the composition of two rotations matters.
+This is kind of the point of group theory.\\
+Now we can look at the rotational symmetries of another soli: an isocagonal cone.
+This time it is quite obvious: the rotational symmetries are precisely the rotations on the central axis of degree $n\pi/6$ where $n=0,1,2,\ldots, 11$.
+Now this set of rotations has order $12$ as well.
+But are the two sets of rotational symmetries, one on a tetrahedron and another on a isocagonal cone, the same?
+No, our intuition said. But why?
+\begin{proposition}
+    The groups of rotational symmetries of a tetrahedron and a isocagonal cone are different.
+\end{proposition}
+\begin{proof}
+    Note that every rotation in the tetrahedron group is the same as doing nothing after repeating itself 2 or 3 (so, 6) times. 
+    But the rotation of $\pi/6$ degrees of the isocagonal cone does not have this property.
+    Therefore the two groups are different.
+\end{proof}
+There is another way of doing it,
+\begin{proof}[Alternative proof]
+    In our previous example, we have found two rotations $S$ $R$ such that they do not commute, i.e. $RS\neq SR$.
+    However, every two rotations in the isocagonal cone group commmutes.
+    Therefore they are different.
+\end{proof}
+Note that in the second proof, there is an important property of groups that was used: commutativity.
+This notion, expressed in several contexts, is essential to group theory.
+But to see that, you have to dive into the world of groups.

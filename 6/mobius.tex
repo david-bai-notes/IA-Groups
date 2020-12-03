@@ -1,0 +1,144 @@
+\section{The M\"obius Group}
+We want to study $f:\mathbb C\to\mathbb C$ in the form 
+$$f(x)=\frac{ax+b}{cx+d},a,b,c,d\in\mathbb C$$
+This function has a pole at $x=-d/c$, so we need an element at infinity.
+We can take $\mathbb C_\infty:=\mathbb C\cup\{\infty\}$ by the stereographic projection $\mathbb C_{\infty}=\mathbb C\cup\{\infty\}\cong S^2$.
+Now we define the Mobius map properly
+\begin{definition}
+    The Mobius map $f:\mathbb C_\infty\to\mathbb C_\infty$ is defined by
+    $$
+    f(z)=
+    \begin{cases}
+        \frac{az+b}{cz+d}\text{, if $z\neq\infty$ and $z\neq -d/c$}\\
+        \infty\text{, if $z=-d/c$}\\
+        \frac{a}{c}\text{, if $z=\infty$}
+    \end{cases}
+    $$
+    where $ad-bc\neq 0$.
+\end{definition}
+The reason why we impose the last condiciton is that we want the Mobius map to be a bijection from $\mathbb C_\infty$ to $\mathbb C_\infty$.
+\begin{proposition}
+    Let $\mathcal M=\{f:\mathbb C_\infty\to\mathbb C_\infty:f\text{ is a Mobius function.}\}$.
+    Then $(\mathcal M,\circ,\mathrm{id})$ is a group.
+\end{proposition}
+\begin{proof}
+    Obviously $\mathrm{id}\in\mathcal M$.
+    Note also that if $g(z)=(az+b)/(cz+d), g'(z)=(a'z+b')/(c'z+d')$, then $g'(g(z))=(a''z+b'')/(c''z+d'')$ where
+    $$
+    \begin{pmatrix}
+        a''&b''\\
+        c''&d''
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a'&b'\\
+        c'&d'
+    \end{pmatrix}
+    \begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}
+    $$
+    Then it immediately tells us that $\mathcal M$ is closed under $\circ$ since the determinant function is multiplicative.
+    Note as well that it also gives us the inverse by just finding some $a',b',c',d'$ (which exists due to our criterion on determinant) such that
+    $$
+    \begin{pmatrix}
+        a'&b'\\
+        c'&d'
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}^{-1}
+    $$
+    by noticing that the identity function corresponds to $cI,c\neq 0$.
+\end{proof}
+We can have $\mathcal M$ to act on $\mathbb C^\infty$ faithfully (with trivial kernel), so $\mathcal M\le\operatorname{Sym}\mathbb C_\infty$.
+Now consider the Mobius transformation $f(z)=1/(z-a)$, which sends $a$ to $\infty$ and its inverse that sends $\infty$ to $a$, so there is nothing special with $\infty$ in $\mathbb C^\infty$, as one will expect as there is no special point on $S^2$.
+\begin{proposition}\label{decomp_mobius}
+    Every Mobius tranformation is a composition of $z\mapsto az,a\neq 0$, $z\mapsto z+b$ and $z\mapsto 1/z$.
+\end{proposition}
+\begin{proof}
+    Let $z\mapsto (az+b)/(cz+d)$ be a mobius transformation, then if $c=0$ the proposition is trivial.
+    Otherwise $c\neq 0$, then we have
+    $$\frac{az+b}{cz+d}=\frac{a}{c}-\frac{ad-bc}{c(cz+d)}$$
+    which can obviously be obtained from the said functions.
+\end{proof}
+Now, how about fixed point of a Mobius transformation?
+We know that a Mobius transformation fixes at least $1$ point, but how about more?
+\begin{proposition}
+    A Mobius transformation fixes $3$ points is the identity.
+\end{proposition}
+\begin{proof}
+    Suppose
+    $$f:z\mapsto\frac{az+b}{cz+d}$$
+    If $\infty$ is a fixed point, then $c=0$, so $f$ is a linear function.
+    But then a linear function that fixes $2$ (non-infinity) points is the identity (since $f(x)-x$ is linear and a linear function has exactly $1$ root unless it is constantly $0$), $f$ is the identity.\\
+    Now if $\infty$ is not a fixed point, then
+    $$f(z)=z\iff \frac{az+b}{cz+d}-z=0\iff az+b-z(cz+d)=0$$
+    which has at most $2$ roots (hence fixed point) since it is quadratic, unless it is the zero function, which essentially means that $c=b=0,d=a\neq 0\implies f=\mathrm{id}$.
+\end{proof}
+\begin{proposition}\label{mobius_3pts}
+    Given distinct $z_1,z_2,z_3\in\mathbb C_\infty$ and $w_1,w_2,w_3\in\mathbb C$, then there is an unique Mobius transformation $f$ such that $f(z_i)=w_i$ for $i\in\{1,2,3\}$.
+\end{proposition}
+Note that since every Mobius transformation is a bijective (hence invertible), $w_i$'s are distinct as well.
+\begin{proof}
+    For existence, it suffices to deal with the case where $w_1,w_2,w_3$ are $0,1,\infty$, since once we've found maps $f,g$ such that $f:z_1,z_2,z_3\mapsto 0,1,\infty,g:w_1,w_2,w_3\mapsto 0,1,\infty$, then $g^{-1}\circ f$ will send $z_1,z_2,z_3$ to $w_1,w_2,w_3$.\\
+    Now if none of $z_i$'s is $\infty$, we can use the interpolation
+    $$f(z)=\frac{(z-z_2)(z-z_3)}{(z_1-z_2)(z_2-z_3)}+\frac{(z-z_1)(z-z_2)}{z-z_3}$$
+    Otherwise, suppose $z_i=\infty$, then the map $f_i$ suffices where
+    $$f_1(z)=\frac{z-z_2}{z-z_3},f_2(z)=\frac{z_1-z_3}{z-z_3}, f_3(z)=\frac{z-z_2}{z_1-z_2}$$
+    For uniqueness, suppose $f,f'$ send $z_1,z_2,z_3$ to $w_1,w_2,w_3$ respectly, then $f^{-1}\circ f'$ fixes $z_1,z_2,z_3$, hence $f^{-1}\circ f'=\mathrm{id}\implies f=f'$.
+\end{proof}
+If $f,g\in\mathcal M$ and $f$ fixes $z_0$, then $gfg^{-1}$ fixes $g(z_0)$, which gives rise to the following observation
+\begin{theorem}
+    %There are three conjugacy classes of $\mathcal M$, namely the identity alone, the functions with exactly one fixed point, and the functions with exactly $2$ fixed points.
+    Every member of a conjugacy class of $\mathcal M$ has the same number of fixed point(s).
+\end{theorem}
+\begin{proof}
+    Obviously the identity itself is itself a conjugacy class.
+    Now for any nonidentity $f$, $f$ has either $1$ or $2$ fixed points.\\
+    If $f$ has $1$ fixed point $z_0\neq\infty$, then suppose $g(z)=1/(z-z_0)$, we know that $gfg^{-1}$ fixes $\infty$, and it cannot fix any other points because if so then applying $g^{-1}$ to that point would produce another fixed point of $f$.
+    So it has to be the map $z\mapsto z+b,b\neq 0$.\\
+    If $f$ has $2$ fixed point, then we consider a Mobius transformation $g$ which sends the fixed points to $0,\infty$, then $gfg^{-1}$ fixed $0$ to $\infty$ and sends $1$ to $a\in\mathbb C\neq 0,\infty$, so there is exactly one Mobius transformation $z\mapsto az, a\neq 1$.
+\end{proof}
+Note that $(g^{-1}fg)^n=g^{-1}f^ng$.
+This allows us to compute the arbitrary (integral) power of a Mobius transformation.
+\begin{definition}
+    The circle in the extended complex numbers is the equation $Az\bar z+\bar Bz+B\bar z+C=0$ with $A,C\in\mathbb R,B\in\mathbb C$.
+    Consider $\infty$ is a point on this circle if and only if $A=0$.
+\end{definition}
+Note that circles in $\mathbb C$ are also circles in $\mathbb C_\infty$, and all other $\mathbb C_\infty$ circles are lines in $\mathbb C$.
+\begin{proposition}
+    Circles in $\mathbb C_\infty$ are mapped to circles in $\mathbb C_\infty$ under any Mobius transformations.
+\end{proposition}
+\begin{proof}
+    It is sufficient to verify this for $z\mapsto az,z\mapsto z+b,z\mapsto z^{-1}$ due to Proposition \ref{decomp_mobius}.
+    It is then trivial.
+\end{proof}
+Note that every circle gets to mapped to any other circle since three points determine the circle and Proposition \ref{mobius_3pts}
+\begin{definition}
+    For extended complex numbers $z_1,z_2,z_3,z_4$, the cross ratio is defined by
+    $$[z_1,z_2,z_3,z_4]=\frac{(z_4-z_1)(z_2-z_3)}{(z_2-z_1)(z_4-z_3)}$$
+\end{definition}
+We need to examine carefully when one of these numbers is infinity.
+For example, if we have $z_1=\infty$, then the cross ratio is $(z_2-z_3)/(z_4-z_3)$.
+\begin{corollary}
+    For extended complex numbers $z_1,z_2,z_3,z_4$, the cross ratio is equal to $f(z_4)$ where $f$ is the unique Mobius transformation sending $z_1,z_2,z_3$ to $0,1,\infty$ respectively.
+\end{corollary}
+\begin{theorem}
+    Mobius transformations preserve the cross-ratio.
+\end{theorem}
+\begin{proof}
+    Suppose $z_1,z_2,z_3,z_4\in\mathbb C_\infty$, and $g\in\mathcal M$.
+    Let $f$ be the Mobius transformation sending $z_1,z_2,z_3$ to $0,1,\infty$, so the cross ratio is $f(z_4)$, so $f\circ g^{-1}$ sends $g(z_1),g(z_2),g(z_3)$ to $0,1,\infty$, so the cross ratio of the $g(z_i)$'s is $f\circ g^{-1}(g(z_4))=f(z_4)$.
+\end{proof}
+The converse is also true (and proved in example sheet): If a map preserves cross-ratio, then it is a Mobius transformation.
+\begin{corollary}
+    Four points $z_1,z_2,z_3,z_4\in\mathbb C_\infty$ are on a circle (in the sense of $\mathbb C_\infty$) if and only if $[z_1,z_2,z_3,z_4]$ is real.
+\end{corollary}
+\begin{proof}
+    Let $f$ be the unique Mobius transformation sending $z_1,z_2,z_3$ to $0,1,\infty$, so $[z_1,z_2,z_3,z_4]=f(z_4)$.
+    Let $c$ be the unique circle passing through $z_1,z_2,z_3$, then $z_4\in c\iff f(z_4)\in f(c)$, but $f(c)=\mathbb R\cup\{\infty\}$.
+\end{proof}

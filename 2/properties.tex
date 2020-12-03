@@ -1,0 +1,134 @@
+\section{Examples and Properties of Groups}
+\begin{definition}
+    A group $G$ is called abelian if $ab=ba$ for any $a,b\in G$.
+\end{definition}
+\begin{definition}
+    A group is finite if the underlying set $G$ has finitely many element.
+    In which case, we write $|G|$ to denote the number of elements in $G$.
+    We call it the \textit{order} of $G$.
+\end{definition}
+\begin{example}
+    1. Consider the set that contains a single element.
+    There is an unique binary operation that can be defined on it which makes it a group.\\
+    2. The set of integers under addition $(\mathbb Z, +, 0)$ is a group.\\
+    3. We can replace the set $\mathbb Z$ by $\mathbb R, \mathbb C$ or $\mathbb Q$ and we still get a group.
+    These groups are all abelian.\\
+    4. (non-example) $(\mathbb N, +, 0)$ is not a group since it does not have inverses.\\
+    5. (non-example) $(\mathbb Z, -, 0)$ is not a group since it does not have the law of associativity.
+    $1-(1-1)\neq (1-1)-1$.\\
+    6. (non-example) $(\mathbb Q, \times, 1)$ is not a group since $0$ does not have an inverse.\\
+    7. $(\mathbb Q\setminus \{0\},\times, 1)$ is a group.
+    Similarly, $(\mathbb C\setminus \{0\},\times, 1)$, $(\mathbb R\setminus \{0\},\times, 1)$ are also groups.
+    And they are all abelian.\\
+    8. If $X\subset\mathbb R^3$ is a solid, then the set of rotational symmetries of it gives a group under composition.
+    The identity element is ``doing nothing''.
+    Note that it may or may not be abelian.
+    It can also be infinite (e.g. sphere).\\
+    9. $(\mathbb Q_{>0}, \times, 1)$ is a group.\\
+    10. $(\{z\in\mathbb C: |z|=1\}, \times, 1)$ is a group.\\
+    11. For any natural number $n$,
+    $$C_n=\{z\in\mathbb C: z^n=1\}$$
+    is a group under multiplication.
+    It is abelian and finite as well, and it has exactly $n$ elements.\\
+    12. For any $n\in\mathbb N$, the set $\mathbb Z_n=\{0,1,2,\ldots n-1\}$ is a group under $+_n$, the addition modulo $n$.
+    It is also abelian and finite (order $n$).
+    The groups $C_n$ and $\mathbb Z_n$ are actually the same (why?).\\
+    13. Consider the set $\operatorname{Isom}(\mathbb R)$ be the set of isometries (i.e. distance-preserving maps) within the real numbers.
+    They constitute a group under composition, where $e$ is the identity function.
+    Examples of elements in this group are: the function $r:x\mapsto -x$, the function $t:x\mapsto x+1$.
+    So $r\circ t=-(x+1)=-x-1$, but $t\circ r=(-x+1)=1-x\neq r\circ t$.
+    Therefore this group is non-abelian.
+    It is not finite as well.\\
+    14. Let $\operatorname{GL}_2(\mathbb R)$ be the set of invertible $2\times 2$ matrices in $\mathbb R$.
+    It gives a group if we take the multiplication to be composition (matrix multiplication) and identity to be the identity matrix.
+\end{example}
+\begin{definition}
+    Let $(G,\cdot_G,e_G)$ and $(H,\cdot_H, e_H)$.
+    We say the latter is a subgroup of the former if $H\subseteq G$, $e_H=e_G$ and
+    $$\forall a,b\in H, a\cdot_Hb=a\cdot_Gb$$
+    In this case, we say $H\le G$.
+\end{definition}
+\begin{proposition}
+    Let $(G,\cdot_G,e_G)$ be a group and $H\subseteq G$ be nonempty.
+    If for all $a,b\in H$, $a\cdot_Gb^{-1}\in\mathbb H$, then there is a unique $\cdot_H$ on $H$ and a unique $e_H\in\mathbb H$ such that $(H,\cdot_H, e_H)$ is a group and $H\le G$.
+\end{proposition}
+\begin{proof}
+    As $H$ is nonempty, it contains some element $x$, so by hypothesis we have $e_G=x\cdot_Gx^{-1}\in H$.
+    Now for any $a\in H$, we write $a^{-1}=e_G\cdot_Ga^{-1}\in\mathbb H$.
+    For any $a,b\in H$, we have $ab=a\cdot_G(b^{-1})^{-1}\in H$.\\
+    Define $e_H=e_G$ and $a\cdot_Hb=a\cdot_Gb$, which makes $H$ a subgroup of $G$.
+    Trivial to check.
+    The uniqueness follows from the definition of a subgroup.
+\end{proof}
+\begin{example}
+    1. $(\mathbb Z,+,0)\le(\mathbb Q,+,0)\le(\mathbb R,+,0)\le(\mathbb C,+,0)$.\\
+    2. Any group is a subgroup of itself.\\
+    3. For any group $(G,\cdot,e)$, $\{e\}\le G$. This is called the trivial subgroup.\\
+    4. $(\{1,-1\},\times,1)\le(\mathbb Q\setminus\{0\},\times,1)$.\\
+    5. If $m|n$, $C_m\le C_n$.\\
+    6. In the rotational symmetry group of the tetrahedron, the rotations by $0,\pi$ through an axis joining the midpoint of two opposite edges is a subgroup.\\
+    7. The group $\operatorname{SL}_2(\mathbb R)$ consisting of all matrices of determinant $1$ is a subgroup of $\operatorname{GL}_n(\mathbb R)$.
+\end{example}
+In general, we cannot find the all subgroups of a group, but we can do it sometimes.
+\begin{proposition}
+    The subgroups of $\mathbb Z$ under addition are of the form $k\mathbb Z$ where $k\in\mathbb Z$.
+\end{proposition}
+\begin{proof}
+    It is obvious that $k\mathbb Z$ is always a subgroup for any $k\in\mathbb Z$.
+    Indeed, suppose we have $kn,km\in k\mathbb Z$, we have $kn-km=k(n-m)\in k\mathbb Z$.
+    And $0\in k\mathbb Z$, so it is not empty.\\
+    For any subgroup of $S\le\mathbb Z$, either $S=\{0\}=0\mathbb Z$ or we can consider the smallest positive integer $k$ in that subgroup.
+    Then $k\mathbb Z\subseteq S$.
+    Also, if there is any element that is not a multiple of $k$, that is $S\ni x=kn+r$ for soem $n\in\mathbb Z$ and $0<r<k$.
+    But then $r=x-kn\in S$ contradicts the minimality of $k$, which is a contradiction.
+\end{proof}
+\begin{definition}[Direct Product of Groups]
+    Consider two group $(G,\cdot_G,e_G)$ and $(H,\cdot_H,e_H)$.
+    Define the binary operation $\cdot$ on $G\times H$ by
+    $$(g_1,h_1)\cdot (g_2,h_2)=(g_1\cdot_Gg_2,h_1\cdot_Hh_2)$$
+    This makes $G\times H$ a group by taking the identity to be $(e_G,e_H)$.
+\end{definition}
+From now on, we omit the explicit statement of the binary operation and the identity element.
+\subsection{Symmetries of Regular Polygons}
+let $D_{2n}$ be the set of isometries of the regular $n$-gon.
+We can think of the $n$-gon as the group generated by the $n^{th}$ root of unity.
+Then $D_{2n}$ consists of isometries of the complex numbers which send the $n$-gon to itself.
+\begin{theorem}
+    If we take the set of such isometries, and composition as multiplication and the identity to be the identity function, then it is a group of order $2n$.
+\end{theorem}
+\begin{proof}
+    The first two axioms are trivial.\\
+    We now exhaust the elements in this group.
+    Let $r:\mathbb C\to\mathbb C$ be the map $z\mapsto ze^{2\pi i/n}$.
+    One can show that it is an isometry.
+    Also, $r(e^{2\pi ik/n})=e^{2\pi i(k+1)/n}$, so it does send the $n$-gon to itself.
+    Note as well that $r^n=e$ where $e$ is the identity function, which we have defined as the identity.
+    So $r$ has an inverse, so have all $r^k$.\\
+    Consider the map $s:\mathbb C\to\mathbb C$ by the map $z\mapsto\bar z$.
+    One can also check that it is an isometry satisfying our conditions.
+    Note this time that $s^2=1$, so $s$ has an inverse which is itself.\\
+    Let $f$ be an element of $D_{2n}$.
+    $f(1)=e^{2\pi ik/n}=r^k(1)$ for some $k$ as $f$ preserves that $n$-gon.
+    So let $g(x)=r^{-k}\circ f$, then $g(1)=1$.\\
+    Now consider $g(e^{2\pi i/n})$, this is either $e^{2\pi i/n}$ or $e^{2\pi i(n-1)/n}$ as $g$ is an isometry.\\
+    If it is the former case, then $g$ fixes $0,1$ and $e^{2\pi i/n}$.
+    One can show that an isometry that fixes three points actually fixes any point.
+    So $f=r^{k}$.\\
+    If it is the latter case, then $s\circ g$ would fix $0,1$ and $e^{2\pi i/n}$, so it is the identity again.
+    Therefore $f=r^{k}g=r^{k}s$.\\
+    So $D_{2n}=\{r^ks^\delta:k\in\{0,1,\ldots,n-1\}, \delta\in\{0,1\}\}$, one can show that none of which equals to any other and all of them have inverses.
+    This set has $2n$ elements.
+\end{proof}
+Note that in $D_{2n}$, $sr$ maps $1$ to $e^{2\pi i(n-1)/n}$, and $rsr$ fixes $1$ and $rsr(e^{2\pi i/n})=e^{2\pi i(n-1)/n}$, so $srsr=e\implies rsr=s\implies sr=r^{-1}s$.
+\footnote{The group $D_{2n}$ can be written otherwise as $D_{2n}=\langle s,r|srsr, r^n, s^2\rangle$.}
+\subsection{Symmetries of Sets}
+For a set $X$, the permutation of $X$ is a bijective function $f:X\to X$.\\
+Let $\operatorname{Sym}(X)$ be the set of all permutations of $X$.
+\begin{theorem}
+    For any set $X$, the set of permutations of $X$ under composition, where the identity is the identity function, is a group called the symmetric group on $X$.
+\end{theorem}
+\begin{proof}
+    Obvious.
+\end{proof}
+When $X=\{1,2,\ldots n\}$, then we denote $\operatorname{Sym}(X)$ by $S_n$.
+Immediately $|S_n|=n!$.

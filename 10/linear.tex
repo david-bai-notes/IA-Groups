@@ -1,0 +1,220 @@
+\section{Linear Groups}
+In this section, let $\mathbb F=\mathbb R$ or $\mathbb C$.
+Let $M_{n\times n}(\mathbb F)$ be the set of $n\times n$ matrices with entries in $\mathbb F$.
+Matrix multiplication then gives us a binary operation on $M_{n\times n}(\mathbb F)$.
+$I_n$ is certainly an identiy element of this operation, so $M_{n\times n}(\mathbb F)$ is a monoid under this operation.
+\begin{proposition}
+    An $n\times n$ matrix is invertible iff its determinant is nonzero.
+\end{proposition}
+\begin{proof}
+    In Vectors \& Matrices.
+\end{proof}
+\begin{definition}
+    The set of $n\times n$ matrix with entries in $\mathbb F$ which has inverses, written as $\operatorname{GL}_n(\mathbb F)$, is a group under matrix multiplication.
+    Equivalently, by the preceding proposition, $\operatorname{GL}_n(\mathbb F)$ consists of all $n\times n$ matrices with nonzero determinant.
+\end{definition}
+The map $\det:\operatorname{GL}_n(\mathbb F)\to\mathbb F^\times=(\mathbb F\setminus\{0\},\times,1)$ is a (surjective) group homomorphism since $\det(AB)=\det(A)\det(B)$.
+\begin{definition}
+    The kernel of $\det$ is called the special linear group $\operatorname{SL}_n(\mathbb F)$, which consists of all $n\times n$ matrices $M$ with $\det M=1$.
+\end{definition}
+So $\operatorname{SL}_n(\mathbb F)\unlhd\operatorname{GL}_n(\mathbb F)$.
+By Theorem \ref{1_isom_thm}, we have $\operatorname{GL}_n(\mathbb F)/\operatorname{SL}_n(\mathbb F)\cong\mathbb F^\times$.\\
+The group $\operatorname{GL}_n(\mathbb F)$ acts on $\mathbb F^n$ by $M\star x=Mx$ (here $x$ is written as column vector).
+This corresponds to a homomorphism $\rho:\operatorname{GL}_n(\mathbb F)\to\operatorname{Sym}(\mathbb F^n)$.
+Note that $\rho$ is injective by considering the action of a matrix on the standard basis.
+Also, the image of $\rho$, which is isomorphic to $\operatorname{GL}_n(\mathbb F)$ by Theorem \ref{1_isom_thm}, is precisely the set of invertible linear maps $\mathbb F^n\to\mathbb F^n$.
+\begin{proposition}
+    If $A$ is a $n\times n$ matrix represents a linear transformaton $\alpha:\mathbb F^n\to\mathbb F^n$ in the standard basis $\{e_i\}$.
+    If we have another basis $\{f_i\}$, then in the new basis, $\alpha$ is represented by $P^{-1}AP$ where $P$ is the (invertible) matrix with entries determined by the linear combination of $f_j$ by $\{e_i\}$.
+    That is
+    $$f_j=\sum_{i=1}^nP_{ij}e_i$$
+    Group theoretically, the group $\operatorname{GL}_n(\mathbb F)$ can act on the set of all $n\times n$ matrices, so the orbit of $A$ under this action is all matrices in the form $P^{-1}AP$, that is, the matrices that actually represents the ``same'' linear transformation but in different basis.
+\end{proposition}
+\begin{proof}
+    It is easy to check that conjugating by invertible matrix is indeed an action, and the formula is just verification.
+\end{proof}
+\begin{example}
+    1. Every complex matrix is conjugate to a matrix in the Jordan normal form.
+    For $2$-dimensional matrices, any complex $2\times 2$ matrix is conjugate to one of
+    $$
+    \begin{pmatrix}
+        \lambda_1&0\\
+        0&\lambda_2
+    \end{pmatrix},\lambda_1\neq\lambda_2;
+    \begin{pmatrix}
+        \lambda&0\\
+        0&\lambda
+    \end{pmatrix};
+    \begin{pmatrix}
+        \lambda&1\\
+        0&\lambda
+    \end{pmatrix}
+    $$
+    One can see easily by looking at eigenvalues that no two of them are conjugate to each other.
+    Also, for different value of $\lambda$, in the latter two cases, any two matrices of the same type are not conjugate to each other either.
+    In the first, case, $\operatorname{diag}(\lambda_1,\lambda_2),\operatorname{diag}(\mu_1,\mu_2)\iff \{\lambda_1,\lambda_2\}=\{\mu_1,\mu_2\}$.\\
+    Now we consider the stabilisers of them.
+    Consider an invertible matrix
+    $\left(\begin{smallmatrix}
+        a&b\\
+        c&d
+    \end{smallmatrix}\right)$.
+    Then a matrix of the first type is stabilised by it iff $b=c=0$, and every invertible matrix stabilises a matrix of the second type.
+    For the third type, if this matrix does stabilise a matrix of that kind, then we need $c=0,a=d$, so the stabilisers are the matrices of the form
+    $\left(\begin{smallmatrix}
+        a&b\\
+        0&a
+    \end{smallmatrix}\right)$.\\
+    2. Consider Mobius transformations $f(z)=\frac{az+b}{cz+d},f'(z)=\frac{a'z+b'}{c'z+d'}$, then $f\circ f'=\frac{a''z+b''}{c''z+d''}$ where we have
+    $$\begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}
+    \begin{pmatrix}
+        a'&b'\\
+        c'&d'
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a''&b''\\
+        c''&d''
+    \end{pmatrix}$$
+    which implies a homomorphism $\phi:\operatorname{SL}_2(\mathbb C)\to\mathcal{M}$.
+    This homorphism is surjective since multiplying all of $a,b,c,d$ by a nonzero complex number does not change the Mobius transformation.
+    How about the kernel of $\phi$?
+    Suppose
+    $$\phi\left(\begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}\right)=\operatorname{id}$$
+    So $az+b=(cz+d)z$ which has to be true for all $z\in\mathbb C$, hence $c=0,d=a,b=0$.
+    This implies that the matrix is either $I$ or $-I$.
+    By Theorem \ref{1_isom_thm},
+    $$\operatorname{PSL}_2(\mathbb C)=\operatorname{SL}_2(\mathbb C)/\{\pm I\}\cong\mathcal M$$
+\end{example}
+\begin{definition}
+    The $n^{th}$ orthogonal group is defined by
+    $$\operatorname{O}(n)=\{P\in\operatorname{GL}_n(\mathbb R):PP^\top=I\}$$
+\end{definition}
+Note that $PP^\top=I\iff P^\top P=I$.
+This is a group since
+$$\forall P,Q\in\operatorname{O}(n),(PQ^{-1})(PQ^{-1})^\top=(PQ^\top)(PQ^\top)^\top=PQ^\top QP^\top=I$$
+therefore $PQ^{-1}\in \operatorname{O}(n)$.
+Also $I\in \operatorname{O}(n)$, hence $\operatorname{O}(n)\neq\varnothing$, so indeed $\operatorname{O}(n)\le \operatorname{GL}_n(\mathbb R)$.\\
+In addition, the columns of an orthogonal matrix forms an orthonormal basis for $\mathbb R^n$, and the converse is also true.
+\begin{lemma}
+    Let $P\in\operatorname{GL}_n(\mathbb R)$, then $P\in \operatorname{O}(n)\iff\forall v,w\in\mathbb R^n, (Pv)\cdot(Pw)\iff v\cdot w$.
+\end{lemma}
+\begin{proof}
+    Trivial.
+\end{proof}
+\begin{corollary}
+    Any orthogonal matrix preserves lengths and angles.
+\end{corollary}
+\begin{proof}
+    Immediate.
+\end{proof}
+Note that $\det (A^\top)=\det (A)$, so $\forall P\in\operatorname{O}(n),\det P=\pm 1$.
+\begin{definition}
+    The $n^{th}$ special orthorgonal group $\operatorname{SO}(n)$ consists of orthogonal matrices with determinant $1$.
+\end{definition}
+Or equivalently, $\operatorname{SO}(n)=\ker(\det|_{\operatorname{O}(n)})$, so immediately we have $\operatorname{SO}(n)\unlhd\operatorname{O}(n)$.\\
+Typical examples of non-special orthogonal matrices are refections.
+For an unit vector $a\in\mathbb R^n$, we can consider the reflection $R_a:v\mapsto v-2(v\cdot a)a$.
+This is obviously linear and can be geometrically interpreted as reflection.
+So if we choose a basis for $\mathbb R^n$ which consists of $a$ and an orthonormal basis for the subspace $a^\perp=\{v\in\mathbb R^n:v\perp a\}$, then the union of them gives an orthonormal basis for $\mathbb R^n$, which induces the orthogonal matrix representing the reflection.
+Alternatively we can evaluate to get $R_a(v)\cdot R_a(w)=v\cdot w$ for every $v,w\in\mathbb R^n$.
+But by its form in our specially chosen basis, we have $\det R_a=-1$, so $R_a\in \operatorname{O}(n)\setminus\operatorname{SO}(n)$.
+\begin{lemma}
+    $$\operatorname{SO}(2)=\left\{\begin{pmatrix}
+        \cos\theta&-\sin\theta\\
+        \sin\theta&\cos\theta
+    \end{pmatrix}:\theta\in\mathbb R\right\}$$
+\end{lemma}
+\begin{proof}
+    Consider any $A=\left(\begin{smallmatrix}
+        a&b\\
+        c&d
+    \end{smallmatrix}\right)\in\operatorname{SO}(2)$, then since we have $AA^\top=I$, $a=d,b=-c$.
+    Then $1=ad-bc=a^2+b^2$, so $a,b\in [-1,1]$, so we can write $a=\cos\theta$, consequently $b=-\sin\theta$ (the sign does not matter since we can always do $\theta\mapsto -\theta$).
+    The lemma follows.
+\end{proof}
+Note that for $A\in\operatorname{O}(2)\setminus\operatorname{SO}(2)$, we have $a=-d,b=c$ and $a^2+c^2=1$, therefore
+$$\operatorname{O}(2)\setminus\operatorname{SO}(2)=\left\{\begin{pmatrix}
+    \cos\phi&\sin\phi\\
+    \sin\phi&-\cos\phi
+\end{pmatrix}:\phi\in\mathbb R\right\}=\begin{pmatrix}
+    1&0\\
+    0&-1
+\end{pmatrix}\operatorname{SO}(2)$$
+One immediately have the following corollaries.
+\begin{corollary}
+    $\operatorname{O}(2)\setminus\operatorname{SO}(2)$ consists of reflections.
+\end{corollary}
+\begin{corollary}\label{two_reflections}
+    Everything in $\operatorname{O}(2)$ is a product of at most $2$ reflections.
+\end{corollary}
+\begin{remark}
+    Corollary \ref{two_reflections} can be generalized to $\mathbb R^n$ by induction (with, of course, the replacement of $2$ by $n$).
+\end{remark}
+We proceed to analyze the rotations and reflections in $\mathbb R^3$.
+\begin{theorem}
+    Let $A\in \operatorname{SO}(3)$, then there is an unit vector $v\in\mathbb R^3$ such that $Av=v$.
+\end{theorem}
+\begin{proof}
+    Suffice to show that $A$ has eigenvalue $1$.
+    Indeed, $\det(A-I)=\det(A^\top-I)=\det A\det (A^\top-I)=\det(I-A)=(-1)^3\det(A-I)=-\det(A-I)$, hence $\det(A-I)=0$.
+\end{proof}
+In fact, we can generalize $3$ to any $2n+1$ for $n\in\mathbb N$ using exactly the same way.
+\begin{corollary}\label{SO3_conj}
+    Every $A\in\operatorname{SO}(3)$ is conjugate to a matrix in the form
+    $$\begin{pmatrix}
+        1&0&0\\
+        0&\cos\theta&-\sin\theta\\
+        0&\sin\theta&\cos\theta
+    \end{pmatrix}$$
+\end{corollary}
+\begin{proof}
+    By the theorem there is some unit vector $f_1\in\mathbb R^3$ such that $Af_1=f_1$.
+    And choose an orthonormal basis $f_2,f_3$ of $f_1^\perp$, so that $f_1,f_2,f_3$ is an orthonormal basis of $\mathbb R^3$.
+    Then for $i=2,3$, we have $(Af_i)\cdot f_1=(Af_i)\cdot (Af_1)=f_i\cdot f_1=0$.
+    So $Af_i$ is a linear combination of $f_2,f_3$ only.
+    Hence in this new basis, the matrix will look like
+    $$A'=\begin{pmatrix}
+        1&0&0\\
+        0&a&b\\
+        0&c&d
+    \end{pmatrix}$$
+    By computing $A'A'^\top=I$, we find
+    $$\begin{pmatrix}
+        a&b\\
+        c&d
+    \end{pmatrix}=\begin{pmatrix}
+        \cos\theta&-\sin\theta\\
+        \sin\theta&\cos\theta
+    \end{pmatrix}$$
+    for some $\theta$.
+    The result follows.
+\end{proof}
+Note that we can manipulate the change-of-basis matrix to make it special orthogonal.
+\begin{corollary}
+    Every element in $\operatorname{O}(3)$ is the composition of at most $3$ reflections.
+\end{corollary}
+\begin{proof}
+    Every element in $\operatorname{SO}(3)$ is the composition of two reflections by observing
+    $$\begin{pmatrix}
+        1&0&0\\
+        0&\cos\theta&-\sin\theta\\
+        0&\sin\theta&\cos\theta
+    \end{pmatrix}=\begin{pmatrix}
+        1&0&0\\
+        0&1&0\\
+        0&0&-1
+    \end{pmatrix}\begin{pmatrix}
+        1&0&0\\
+        0&\cos(-\theta)&\sin(-\theta)\\
+        0&\sin(-\theta)&-\cos(-\theta)
+    \end{pmatrix}$$
+    and using Corollary \ref{SO3_conj}.
+    Now choose any reflection $R$, then $\operatorname{O}(3)\setminus\operatorname{SO}(3)=R\operatorname{SO}(3)$, therefore every other element in $\operatorname{O}(3)$ is a composition of at most $3$ reflections.
+\end{proof}
